@@ -1,0 +1,92 @@
+<div id="updateEmpresa" mdbModal #updateEmpresa="mdbModal" class="modal fade right" tabindex="-1" role="dialog"
+    aria-labelledby="myBasicModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-full-height modal-right modal-success" role="document" style="width:450px">
+        <div class="modal-content">
+            <div class="modal-header" color="green">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="updateEmpresa.hide()">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title w-100 heading lead" id="myModalLabel">Actualizar perfil</h4>
+            </div>
+            <div class="modal-body">
+                <div style="height: 630px;overflow-y: scroll;">
+                    Ingrese los datos
+                    <div class="md-form mb-5 mr-1">
+                        <form [formGroup]="formulario" class="form rounded">
+                            <input type="text" id="nombre_empresa" formControlName="nombre_empresa" class="form-control"
+                                mdbInput>
+                            <label for="nombre_empresa">Nombre Empresa</label>
+                        </form>
+                    </div>
+                    <div class="md-form mb-5 mr-1">
+                        <form [formGroup]="formulario" class="form rounded">
+                            <input type="text" id="direccion" formControlName="direccion" class="form-control" mdbInput>
+                            <label for="direccion">Dirección</label>
+                        </form>
+                    </div>
+                    <div class="md-form mb-5 mr-1">
+                        <form [formGroup]="formulario" class="form rounded">
+                            <input type="number" id="contacto" formControlName="contacto" class="form-control" mdbInput>
+                            <label for="contacto">Contacto</label>
+                        </form>
+                    </div>
+                    <div class="md-form mb-5 mr-1">
+                        <form [formGroup]="formulario" class="form rounded">
+                            <input type="text" id="mision" formControlName="mision" class="form-control" mdbInput>
+                            <label for="mision">Misión</label>
+                        </form>
+                    </div>
+                    <div class="md-form mb-5 mr-1">
+                        <form [formGroup]="formulario" class="form rounded">
+                            <input type="text" id="vision" formControlName="vision" class="form-control" mdbInput>
+                            <label for="vision">Visión</label>
+                        </form>
+                    </div>
+                    <div class="md-form mb-5 mr-1">
+                        <form [formGroup]="formulario" class="form rounded">
+                            <input type="text" id="valores" formControlName="valores" class="form-control" mdbInput>
+                            <label for="valores">Valores</label>
+                        </form>
+                    </div>
+                    <div class="md-form mb-5 mr-1">
+                        <form [formGroup]="formulario" class="form rounded">
+                            <input type="text" id="copyright" formControlName="copyright" class="form-control" mdbInput>
+                            <label for="copyright">Copyright</label>
+                        </form>
+                    </div>
+                    <div class="md-form mb-5 mr-1">
+                        <form [formGroup]="formulario" class="form rounded">
+                            <p>Logo</p>
+                            <div *ngIf="validar == true">
+                                <img width="100px" [src]="logo" alt="">
+                                <button type="button" mdbBtn color="danger" mdbWavesEffect
+                                    class="waves-light rounded-pill" aria-label="Close" (click)="editarImagen()"
+                                    mdbWavesEffect>
+                                    Quitar imagen <mdb-icon fas icon="times"></mdb-icon></button>
+                            </div>
+
+                            <div *ngIf="validar == false">
+                                <p>Selecciona una imagen</p>
+                                <input (change)="capturarImagen($event)" type="file">
+                            </div>
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+
+                <button type="button" mdbBtn color="danger" mdbWavesEffect class="waves-light rounded-pill"
+                    aria-label="Close" (click)="updateEmpresa.hide()" mdbWavesEffect>
+                    Cerrar <mdb-icon fas icon="times"></mdb-icon></button>
+                <button type="button" mdbBtn color="success" mdbWavesEffect class="rounded-pill" (click)="update()">
+                    Guardar <mdb-icon fas icon="save"></mdb-icon></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-modal-exito [accionExito]="accionExito"></app-modal-exito>
+<app-modal-error [accion]="accion"></app-modal-error>

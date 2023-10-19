@@ -1,0 +1,22 @@
+<div class="texto">
+    <div class="text-center pt-4 texto">
+        <h1 style="color: #92D66E">Aprovecha los redisuos reciclables</h1>
+        <br>
+        <p class="pt-1">Con nosotros puedes hacer manualidades para aprovechar tus residuos reciclables</p>
+    </div>
+
+    <div class="row justify-content-md-center align-content-center m-0 pt-4 text-center">
+        <div class="card shadow m-2" style="width: 23rem;" *ngFor="let consejo of consejos">
+            <img src="{{consejo.img}}" class="card-img-top hvr-grow" width="100px" height="250px" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"><b>{{consejo.nombre_consejo}}</b></h5>
+                <p class="card-text">{{consejo.descripcion}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container text-center p-5">
+        <button class="btn btn-success p-3" (click)="redirectTo('aseo/separacion')"><b>Regresar</b></button>
+    </div>
+
+</div>

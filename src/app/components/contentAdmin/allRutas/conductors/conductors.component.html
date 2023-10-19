@@ -1,0 +1,122 @@
+<div class="pad pt-4">
+    <div class="row align-items-center">
+        <div class="col-6">
+            <h3><b>Conductores</b></h3>
+        </div>
+        <div class="col-6 text-right pb-3">
+            <button type="button" mdbBtn size="lg" class="rounded-pill btn btn-success" (click)="insertConductor.show()"
+                mdbWavesEffect>Agregar conductor <mdb-icon fas icon="plus"></mdb-icon>
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 mx-auto">
+            <div class="md-form">
+                <input type="text" [(ngModel)]="searchText" class="form-control" id="search" mdbInput />
+                <label for="search">Buscar conductor</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="pad" style="height: 460px;overflow-y: scroll;">
+
+    <table id="tableSortExample" mdbTable class="z-depth-1">
+        <thead>
+            <tr>
+                <th scope="col">Cédula</th>
+                <th scope="col">Nombre y apellidos</th>
+                <th scope="col">Licencia</th>
+                <th scope="col">Tipo licencia</th>
+                <th scope="col">Teléfono</th>
+                <th scope="col">Dirección</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let conductor of conductores">
+                <td>{{conductor.cedula}}</td>
+                <td>{{conductor.nombre}}</td>
+                <td>{{conductor.licencia}}</td>
+                <td>{{conductor.tipo_licencia}}</td>
+                <td>{{conductor.telefono}}</td>
+                <td>{{conductor.direccion}}</td>
+                <td>
+                    <button type="btn-warning" mdbBtn class="rounded-pill btn btn-warning"
+                    (click)="editar(conductor.id)" mdbWavesEffect><mdb-icon fas icon="pen"></mdb-icon>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<div id="insertConductor" mdbModal #insertConductor="mdbModal" class="modal fade right" tabindex="-1" role="dialog"
+    aria-labelledby="myBasicModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-full-height modal-right modal-success" role="document" style="width:450px">
+        <div class="modal-content">
+            <div class="modal-header" color="green">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="insertConductor.hide()">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title w-100 heading lead" id="myModalLabel">Agregar conductor</h4>
+            </div>
+            <div class="modal-body">
+                Ingrese los datos
+                <div class="md-form mb-5 mr-1">
+                    <form [formGroup]="formulario" class="form rounded">
+                        <div class="md-form mb-5">
+                            <input type="number" id="cedula" formControlName="cedula" class="form-control" mdbInput>
+                            <label for="cedula">Cédula</label>
+                        </div>
+                        <div class="md-form mb-5">
+                            <input type="text" id="nombre" formControlName="nombre" class="form-control" mdbInput>
+                            <label for="nombre">Nombres y apellidos</label>
+                        </div>
+                        <div class="md-form mb-3">
+                            <input type="number" id="licencia" formControlName="licencia" class="form-control" mdbInput>
+                            <label for="licencia">Licencia</label>
+                        </div>
+                        <div class="md-form mb-3 mr-1">
+                            <form [formGroup]="formulario" class="form rounded">
+                                <p>Tipo de licencia</p>
+                                <select class="browser-default custom-select" formControlName="tipo_licencia">
+                                    <option selected disabled>Elige un tipo de licencia</option>
+                                    <option value="A1">A1</option>
+                                    <option value="A2">A2</option>
+                                    <option value="B1">B1</option>
+                                    <option value="B2">B2</option>
+                                    <option value="B3">B3</option>
+                                    <option value="C1">C1</option>
+                                    <option value="C2">C2</option>
+                                    <option value="C3">C3</option>
+                                </select>
+                            </form>
+                        </div>
+                        <div class="md-form mb-5">
+                            <input type="number" id="telefono" formControlName="telefono" class="form-control" mdbInput pattern="[0-9]">
+                            <label for="telefono">Télefono</label>
+                        </div>
+                        <div class="md-form mb-5">
+                            <input type="text" id="direccion" formControlName="direccion" class="form-control" mdbInput>
+                            <label for="direccion">Dirección</label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+
+                <button type="button" mdbBtn color="danger" mdbWavesEffect class="waves-light rounded-pill"
+                    aria-label="Close" (click)="insertConductor.hide()" mdbWavesEffect>
+                    Close <mdb-icon fas icon="times"></mdb-icon></button>
+                <button type="button" mdbBtn color="success" mdbWavesEffect class="rounded-pill" (click)="insertar()">
+                    Guardar <mdb-icon fas icon="save"></mdb-icon></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-modal-exito [accionExito]="accionExito"></app-modal-exito>
+<app-modal-error [accion]="accionError"></app-modal-error>
+<app-editar-conductor [id_conductor]="id_conductor"></app-editar-conductor>

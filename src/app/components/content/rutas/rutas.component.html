@@ -1,0 +1,68 @@
+<div class="card-body">
+  <div class="card">
+    <h5 class="card-header">Rutas</h5>
+    <div class="card-body">
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="inputState">Comuna</label>
+          <form [formGroup]="formulario" class="form rounded">
+            <select class="browser-default custom-select" formControlName="comuna">
+              <option selected disabled>Elige una comuna</option>
+              <option *ngFor="let comuna of comunas" value="{{comuna.id_comuna}}">{{comuna.comuna}}
+              </option>
+            </select>
+          </form>
+          <mdb-error *ngIf="errorComuna == true" class="pt-4 pl-2 mt-1">Debe elegir una comuna para continuar
+          </mdb-error>
+        </div>
+        <div *ngIf="validarBarrioTag == true" class="form-group col-md-4">
+          <label for="inputState">Barrio</label>
+          <form [formGroup]="formulario" class="form rounded">
+            <select class="browser-default custom-select" formControlName="barrio">
+              <option selected disabled>Elige una comuna</option>
+              <option *ngFor="let barrio of barrios" value="{{barrio.barrio}}">{{barrio.barrio}}
+              </option>
+            </select>
+          </form>
+          <mdb-error *ngIf="errorBarrio == true" class="pt-4 pl-2 mt-1">Debe elegir un barrio para continuar</mdb-error>
+        </div>
+        <div *ngIf="validarRuta == true" class="form-group col-md-4">
+          <label for="inputState">Ruta</label>
+          <form [formGroup]="formulario" class="form rounded">
+            <select class="browser-default custom-select" formControlName="ruta">
+              <option selected disabled>Elige una ruta</option>
+              <option *ngFor="let ruta of rutas" value="{{ruta.id_ruta}}">{{ruta.nombre_ruta}}
+              </option>
+            </select>
+          </form>
+          <mdb-error *ngIf="errorRuta == true" class="pt-4 pl-2 mt-1">Debe elegir una ruta para continuar</mdb-error>
+        </div>
+      </div>
+      <button *ngIf="validarComuna == true" (click)="continuarComuna()" type="button" mdbBtn color="success"
+        mdbWavesEffect class="rounded-pill">
+        Siguiente <mdb-icon fas icon="angle-right"></mdb-icon></button>
+      <button *ngIf="validarBarrio == true" (click)="continuarBarrio()" type="button" mdbBtn color="success"
+        mdbWavesEffect class="rounded-pill">
+        Siguiente </button>
+      <button *ngIf="validarRuta == true" (click)="continuarRuta()" type="button" mdbBtn color="success" mdbWavesEffect
+        class="rounded-pill">
+        Ver ruta </button>
+      <button type="button" mdbBtn color="danger" mdbWavesEffect class="waves-light rounded-pill" aria-label="Close"
+        (click)="redirectTo('aseo/rutas')" mdbWavesEffect>
+        Limpiar campos <mdb-icon fas icon="times"></mdb-icon></button>
+
+    </div>
+  </div>
+  <br>
+  <div class="card Mapa">
+
+    <h3 *ngIf="mostrarHorario === true" class='pt-3 text-center'>Horario: {{rutaconsultada[0].dia}} - Inicio:
+      {{rutaconsultada[0].hora_inicio}}
+      - Fin: {{rutaconsultada[0].hora_fin}}</h3>
+    <div class="wrapper">
+      <div id="map" #asMap class="map-container">
+
+      </div>
+    </div>
+  </div>
+</div>

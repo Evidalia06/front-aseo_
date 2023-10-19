@@ -1,0 +1,28 @@
+<div mdbModal #error="mdbModal" class="modal fade" id="frameModalTop" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-notify modal-danger" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header" style="background-color: #d00606">
+        <p class="heading lead">Mensaje</p>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="error.hide()">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+      <!--Body-->
+      <div class="modal-body">
+        <div class="text-center">
+            <mdb-icon fas icon="times" size="4x" class="animated rotateIn"></mdb-icon>
+          <p>{{mensaje}}</p>
+        </div>
+      </div>
+      <!--Footer-->
+      <div class="modal-footer justify-content-center">
+        <a type="button" mdbBtn style="background-color: #d00606"class="waves-effect" mdbWavesEffect (click)="error.hide()"
+          data-dismiss="modal">Ok</a>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>

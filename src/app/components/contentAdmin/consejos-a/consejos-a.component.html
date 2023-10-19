@@ -1,0 +1,103 @@
+<div class="pad pt-4">
+    <div class="row align-items-center">
+        <div class="col-6 align-content-center">
+            <h3><b>Consejos de reciclaje</b></h3>
+        </div>
+        <div class="col-6 text-right pb-3">
+            <button type="button" mdbBtn size="lg" class="rounded-pill btn btn-success relative"
+                (click)="insertConsejo.show()" mdbWavesEffect><b>Agregar </b>
+                <mdb-icon fas icon="plus"></mdb-icon>
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 mx-auto">
+            <div class="md-form">
+                <input type="text" [(ngModel)]="searchText" class="form-control" id="search" mdbInput />
+                <label for="search">Buscar consejo</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="pad" style="height: 460px;overflow-y: scroll;">
+    <div>
+
+        <div class="table-responsive">
+            <table id="tableSortExample" mdbTable class="z-depth-1">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre del consejo</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Imagen</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let consejo of consejos; let i = index">
+                        <td scope="row">{{consejo.nombre_consejo}}</td>
+                        <td>{{consejo.descripcion}}</td>
+                        <td><img src="{{consejo.img}}" class="rounded" alt="" width="150px" height="100px" /></td>
+                        <td>
+                            <button type="btn-warning" mdbBtn class="rounded-pill btn btn-warning"
+                            (click)="editar(consejo.id)" mdbWavesEffect><mdb-icon fas icon="pen"></mdb-icon>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div id="insertConsejo" mdbModal #insertConsejo="mdbModal" class="modal fade right" tabindex="-1" role="dialog"
+    aria-labelledby="myBasicModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-full-height modal-right modal-success" role="document" style="width:450px">
+        <div class="modal-content">
+            <div class="modal-header" color="green">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="insertConsejo.hide()">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title w-100 heading lead" id="myModalLabel">Agregar consejo</h4>
+            </div>
+            <div class="modal-body">
+                Ingrese los datos
+                <div class="md-form mb-4 mr-1">
+                    <form [formGroup]="formulario" class="form rounded">
+                        <input type="text" id="nombre_consejo" formControlName="nombre_consejo" class="form-control" mdbInput>
+                        <label for="nombre_consejo">Nombre del consejo</label>
+                    </form>
+                </div>
+                <div class="md-form mb-5 mr-1">
+                    <form [formGroup]="formulario" class="form rounded">
+                        <p>Descripción del consejo</p>
+                        <textarea class="md-textarea form-control pt-0" id="descripcion" aria-label="With textarea" 
+                        formControlName="descripcion" class="form-control"></textarea>
+                        
+                    </form>
+                </div>
+                <div class="md-form mb-5 mr-1">
+                    <form [formGroup]="formulario" class="form rounded">
+                        <p>Selecciona una imagen</p>
+                        <input (change)="capturarImagen($event)" type="file">
+                        <!-- <input accept="image/*" type="file" name="img" formControlName="img"> -->
+                        
+                    </form>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" mdbBtn color="danger" mdbWavesEffect class="waves-light rounded-pill"
+                    aria-label="Close" (click)="insertConsejo.hide()" mdbWavesEffect>
+                    Cerrar <mdb-icon fas icon="times"></mdb-icon></button>
+                <button type="button" mdbBtn color="success" mdbWavesEffect class="rounded-pill" (click)="insertar()">
+                    Guardar <mdb-icon fas icon="save"></mdb-icon></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-modal-exito [accionExito]="accionExito"></app-modal-exito>
+<app-modal-error [accion]="accionError"></app-modal-error>
+<app-editar-consejo [id_consejo]="id_consejo"></app-editar-consejo>

@@ -1,0 +1,112 @@
+<div class="d-flex " id="wrappers">
+
+    <!-- Sidebar -->
+    <div class="colorfondo" id="sidebar-wrapper">
+
+        <a class="nav-link" routerLink='inicio-admin'>
+            <img src="{{empresas?.logo}}" class="rounded" alt="" width="120px" height="120px" class="m-2"
+            class="img-fluid mx-auto d-block p-1">
+        </a>
+        <ul class="navbar-nav mr-auto menu pl-3">
+
+            <li class="nav-item active">
+                <a class="nav-link" routerLink='comunas'>
+                    <span class="text-white">Comunas</span>
+                    <span><i aria-hidden="true"><img src="../../../assets/nav/icomunidad.png"></i></span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" routerLink='barrios'>
+                    <span class="text-white">Barrios</span>
+                    <span><i aria-hidden="true"><img src="../../../assets/nav/icomunidad.png"></i></span>
+                </a>
+            </li>
+
+            <li class="nav-item active">
+                <a class="nav-link" routerLink='horarios'>
+                    <span class="text-white">Horarios</span>
+                    <span><i aria-hidden="true"><img src="../../../assets/nav/ihorario.png"></i></span>
+                </a>
+            </li>
+
+            <li class="nav-item active">
+                <a class="nav-link" routerLink='carros'>
+                    <span class="text-white">Carros</span>
+                    <span><i aria-hidden="true"><img src="../../../assets/nav/icarro.png"></i></span>
+                </a>
+            </li>
+
+            <li class="nav-item active">
+                <a class="nav-link" routerLink='conductores'>
+                    <span class="text-white">Conductores</span>
+                    <span><i aria-hidden="true"><img src="../../../assets/nav/iconductor.png"></i></span>
+                </a>
+            </li>
+
+            <li class="nav-item active">
+                <a class="nav-link" routerLink='rutas'>
+                    <span class="text-white">Rutas</span>
+                    <span><i aria-hidden="true"><img src="../../../assets/nav/gps.png"></i></span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" routerLink='consejos'>
+                    <span class="text-white">Consejos reciclaje</span>
+                    <span><i aria-hidden="true"><img src="../../../assets/nav/iseparacion.png"></i></span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" routerLink='videos'>
+                    <span class="text-white">Videos</span>
+                    <span><i aria-hidden="true"><img src="../../../assets/nav/video.png"></i></span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" routerLink='nosotros'>
+                    <span class="text-white">Nosotros</span>
+                    <span><i aria-hidden="true"><img src="../../../assets/nav/nosotros.png"></i></span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" routerLink='usuarios'>
+                    <span class="text-white">Usuarios</span>
+                    <span><i aria-hidden="true"><img src="../../../assets/nav/nosotros.png"></i></span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                
+            </li>
+        </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+        <nav class="navbar navbar-expand-lg navbar-light border-bottom p-3 colorfondo">
+            <h3 class="mt-1 pr-4 pl-2 text-white"><b>{{empresas?.nombre_empresa}}</b></h3>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                    <div class="container text-center p-3">
+                        <button class="btn btn-success rounded-pill" (click)="redirectTo('admin')"><b>Cerrar sesión</b></button>
+                    </div>
+                </ul>
+            </div>
+        </nav>
+
+        <div>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->

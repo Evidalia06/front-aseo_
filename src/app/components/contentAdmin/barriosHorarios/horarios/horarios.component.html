@@ -1,0 +1,104 @@
+<div class="pad pt-4">
+    <div class="row align-items-center">
+        <div class="col-6">
+            <h3><b>Horarios</b></h3>
+        </div>
+        <div class="col-6 text-right pb-3">
+            <button type="button" mdbBtn size="lg" class="rounded-pill btn btn-success" (click)="insertHorario.show()"
+                mdbWavesEffect>Agregar horario <mdb-icon fas icon="plus"></mdb-icon>
+            </button>
+        </div>
+    </div>
+    <div class="row ">
+        <div class="col-md-12 mx-auto">
+            <div class="md-form">
+                <input type="text" [(ngModel)]="searchText" class="form-control" id="search" mdbInput />
+                <label for="search">Buscar horario</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="pad" style="height: 460px;overflow-y: scroll;">
+
+    <table id="tableSortExample" mdbTable class="z-depth-1">
+        <thead>
+            <tr>
+                <th class="sorting th-sm" scope="col">Dia</th>
+                <th scope="col">Hora inicio</th>
+                <th scope="col">Hora fin</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let horario of horarios; let i = index">
+                <td>{{ horario.dia }}</td>
+                <td>{{ horario.hora_inicio }}</td>
+                <td>{{ horario.hora_fin }}</td>
+                <td>
+                    <button type="btn-warning" mdbBtn class="rounded-pill btn btn-warning"
+                    (click)="editar(horario.id_horario)" mdbWavesEffect><mdb-icon fas icon="pen"></mdb-icon>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="insertHorario" mdbModal #insertHorario="mdbModal" class="modal fade right" tabindex="-1" role="dialog"
+    aria-labelledby="myBasicModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-full-height modal-right modal-success" role="document" style="width:450px">
+        <div class="modal-content">
+            <div class="modal-header" color="green">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="insertHorario.hide()">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title w-100 heading lead" id="myModalLabel">Agregar horario</h4>
+            </div>
+            <div class="modal-body">
+                Ingrese los datos 
+                <div class="md-form mb-3 mr-1">
+                    <form [formGroup]="formulario" class="form rounded">
+                        <p>Día</p>
+                        <select class="browser-default custom-select" formControlName="dia">
+                            <option selected disabled>Elige un día</option>
+                            <option value="Lunes">Lunes</option>
+                            <option value="Martes">Martes</option>
+                            <option value="Miercoles">Miercoles</option>
+                            <option value="Jueves">Jueves</option>
+                            <option value="Viernes">Viernes</option>
+                            <option value="Sabado">Sabado</option>
+                            <option value="Domingo">Domingo</option>
+                        </select>
+                    </form>
+                </div>
+
+                <div class="md-form mb-3 mr-1">
+                    <form [formGroup]="formulario" class="form rounded">
+                        <p>Hora inicio</p>
+                        <input id="hora_inicio" type="time" name="hora_inicio" formControlName="hora_inicio">
+                    </form>
+                </div>
+                <div class="md-form mb-3 mr-1">
+                    <form [formGroup]="formulario" class="form rounded">
+                        <p>Hora fin</p>
+                        <input id="hora_fin" type="time" name="hora_fin" formControlName="hora_fin">
+                        <!-- <input id="appt-timeFin" type="time" name="appt-timeFin" formControlName="appt-timeFin" value="13:30"> -->
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" mdbBtn color="danger" mdbWavesEffect class="waves-light rounded-pill"
+                    aria-label="Close" (click)="insertHorario.hide()" mdbWavesEffect>
+                    Cerrar <mdb-icon fas icon="times"></mdb-icon></button>
+                <button type="button" mdbBtn color="success" mdbWavesEffect class="rounded-pill" (click)="insertar()">
+                    Guardar <mdb-icon fas icon="save"></mdb-icon></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<app-modal-exito [accionExito]="accionExito"></app-modal-exito>
+<app-modal-error [accion]="accionError"></app-modal-error>
+<app-editar-horario [id_horario]="id_horario"></app-editar-horario>

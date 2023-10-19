@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg navbar-light colorfondo">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="row align-items-center">
+            <div class="">
+                <img src="{{empresas?.logo}}" class="rounded " alt="" width="120px" height="120px" class="m-2"
+                    class="img-fluid p-1">
+            </div>
+            <div class="text-right text-white">
+                <h3 class="mt-1 pr-4 pl-2 "><b>{{empresas?.nombre_empresa}}</b></h3>
+            </div>
+        </div>
+        <ul class="navbar-nav mr-auto menu">
+            <li class="nav-item active p-2">
+                <a class="nav-link" routerLink=''>
+                    <span class="text-white">Inicio</span>
+                    <span><i aria-hidden="true"><img src="../../../assets/nav/home.png"></i></span>
+                </a>
+            </li>
+            <li class="nav-item active p-2">
+                <a class="nav-link" routerLink='aseo/separacion'>
+                    <span class="text-white">Separación</span>
+                    <span><i aria-hidden="true"><img src="../../../assets/nav/iseparacion.png"></i></span>
+                </a>
+            </li>
+
+            <li class="nav-item active p-2">
+                <a class="nav-link" routerLink='aseo/rutas'>
+                    <span class="text-white">Mapa de rutas</span>
+                    <span><i aria-hidden="true"><img src="../../../assets/nav/gps.png"></i></span>
+                </a>
+            </li>
+            <li class="nav-item active p-2">
+                <a class="nav-link" routerLink='aseo/nosotros'>
+                    <span class="text-white">Nosotros</span>
+                    <span><i aria-hidden="true"><img src="../../../assets/nav/nosotros.png"></i></span>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+</nav>

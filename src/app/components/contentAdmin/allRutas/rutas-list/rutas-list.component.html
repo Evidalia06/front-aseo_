@@ -1,0 +1,59 @@
+<div class="pad pt-4">
+    <div class="row align-items-center">
+        <div class="col-6">
+            <h3><b>Rutas</b></h3>
+        </div>
+        <div class="col-6 text-right pb-3">
+            <button type="button" mdbBtn size="lg" class="rounded-pill btn btn-success" (click)="abrirModal()"
+                mdbWavesEffect>Agregar ruta <mdb-icon fas icon="plus"></mdb-icon>
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 mx-auto">
+            <div class="md-form">
+                <input type="text" [(ngModel)]="searchText" class="form-control" id="search" mdbInput />
+                <label for="search">Buscar ruta</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="pad" style="height: 460px;overflow-y: scroll;">
+
+    <table id="tableSortExample" mdbTable class="z-depth-1">
+        <thead>
+            <tr>
+                <th scope="col">Nombre ruta</th>
+                <th scope="col">Inicio</th>
+                <th scope="col">Fin</th>
+                <th scope="col">Conductor</th>
+                <th scope="col">Carro</th>
+                <th scope="col">Barrio</th>
+                <th scope="col">Horario</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let ruta of rutas">
+                <td>{{ruta.nombre_ruta}}</td>
+                <td>{{ruta.inicioLng}} - {{ruta.inicioLat}}</td>
+                <td>{{ruta.finLng}} - {{ruta.finLat}}</td>
+                <td>{{ruta.nombre}}</td>
+                <td>{{ruta.marca}} - {{ruta.modelo}}</td>
+                <td>{{ruta.barrio}}</td>
+                <td> {{ruta.dia}} - {{ruta.hora_inicio}} - {{ruta.hora_fin}}</td>
+                <td>
+                    <button type="btn-warning" mdbBtn class="rounded-pill btn btn-warning"
+                    (click)="editar(ruta.id_ruta)" mdbWavesEffect><mdb-icon fas icon="pen"></mdb-icon>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<app-modal-exito [accionExito]="accionExito"></app-modal-exito>
+<app-modal-error [accion]="accionError"></app-modal-error>
+<app-rutas-a [abrir]="abrir"></app-rutas-a>
+<app-editar-rutas [id_ruta]="id_ruta"></app-editar-rutas>

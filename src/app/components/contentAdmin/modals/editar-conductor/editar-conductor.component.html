@@ -1,0 +1,68 @@
+<div id="updateConductor" mdbModal #updateConductor="mdbModal" class="modal fade right" tabindex="-1" role="dialog"
+    aria-labelledby="myBasicModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-full-height modal-right modal-success" role="document" style="width:450px">
+        <div class="modal-content">
+            <div class="modal-header" color="green">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="updateConductor.hide()">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title w-100 heading lead" id="myModalLabel">Actualizar conductor</h4>
+            </div>
+            <div class="modal-body">
+                Ingrese los datos
+                <div class="md-form mb-5 mr-1">
+                    <form [formGroup]="formulario" class="form rounded">
+                        <div class="md-form mb-5">
+                            <input type="number" id="cedula" formControlName="cedula" class="form-control" mdbInput>
+                            <label for="cedula">Cédula</label>
+                        </div>
+                        <div class="md-form mb-5">
+                            <input type="text" id="nombre" formControlName="nombre" class="form-control" mdbInput>
+                            <label for="nombre">Nombres y apellidos</label>
+                        </div>
+                        <div class="md-form mb-3">
+                            <input type="number" id="licencia" formControlName="licencia" class="form-control" mdbInput>
+                            <label for="licencia">Licencia</label>
+                        </div>
+                        <div class="md-form mb-3 mr-1">
+                            <form [formGroup]="formulario" class="form rounded">
+                                <p>Tipo de licencia</p>
+                                <select class="browser-default custom-select" formControlName="tipo_licencia">
+                                    <option selected disabled>Elige un tipo de licencia</option>
+                                    <option value="A1">A1</option>
+                                    <option value="A2">A2</option>
+                                    <option value="B1">B1</option>
+                                    <option value="B2">B2</option>
+                                    <option value="B3">B3</option>
+                                    <option value="C1">C1</option>
+                                    <option value="C2">C2</option>
+                                    <option value="C3">C3</option>
+                                </select>
+                            </form>
+                        </div>
+                        <div class="md-form mb-5">
+                            <input type="number" id="telefono" formControlName="telefono" class="form-control" mdbInput pattern="[0-9]">
+                            <label for="telefono">Télefono</label>
+                        </div>
+                        <div class="md-form mb-5">
+                            <input type="text" id="direccion" formControlName="direccion" class="form-control" mdbInput>
+                            <label for="direccion">Dirección</label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+
+                <button type="button" mdbBtn color="danger" mdbWavesEffect class="waves-light rounded-pill"
+                    aria-label="Close" (click)="updateConductor.hide()" mdbWavesEffect>
+                    Close <mdb-icon fas icon="times"></mdb-icon></button>
+                <button type="button" mdbBtn color="success" mdbWavesEffect class="rounded-pill" (click)="update()">
+                    Guardar <mdb-icon fas icon="save"></mdb-icon></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-modal-exito [accionExito]="accionExito"></app-modal-exito>
+<app-modal-error [accion]="accion"></app-modal-error>

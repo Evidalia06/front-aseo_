@@ -1,0 +1,129 @@
+
+<div id="insertRuta" mdbModal #insertRuta="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-fluid" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="insertRuta.hide()">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title w-100" id="myModalLabel">Rutas</h4>
+            </div>
+            <div class="modal-body">
+                <div style="height: 500px;overflow-y: scroll;">
+
+                    <div class="row pt-0 m-0">
+                        <div class="col-6">
+                            <div class="wrapper">
+                                <div class="box-inputs">
+                                    <div>
+                                        <div id="geocoder" #asGeocoder class="geocoder"></div>
+                                    </div>
+
+                                    <div (click)="changeMode('start')"
+                                        [ngClass]="{'active-way': modeInput === 'start'}">
+                                        <div class="mock-label">Inicio</div>
+                                        <div class="mock-input">{{inicio}}</div>
+                                    </div>
+                                    <div (click)="changeMode('end')" [ngClass]="{'active-way': modeInput === 'end'}">
+                                        <div class="mock-label">Final</div>
+                                        <div class="mock-input">{{fin}}</div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="wrapper">
+                                <button (click)="drawRoute()" type="button" mdbBtn color="success" mdbWavesEffect
+                                    class="rounded-pill">
+                                    Dibujar ruta </button>
+                                <!-- <button (click)="test()" type="button" mdbBtn color="success" mdbWavesEffect
+                                    class="rounded-pill">
+                                    Marcador </button> -->
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="wrapper">
+                                <div id="map" #asMap class="map-container">
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="pb-5 p-2">
+                        <h4>Ingrese los siguientes</h4>
+                        <div class="row m-0">
+                            <div class="col-3 pt-3">
+                                <div class="md-form mb-5">
+                                    <form [formGroup]="formulario" class="form rounded">
+                                        <input type="text" id="nombre_ruta" formControlName="nombre_ruta"
+                                            class="form-control" mdbInput>
+                                        <label for="nombre_ruta">Nombre de la ruta</label>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <p>Condutor</p>
+                                <form [formGroup]="formulario" class="form rounded">
+                                    <select class="browser-default custom-select" formControlName="conductor">
+                                        <option selected disabled>Elige un conductor</option>
+                                        <option *ngFor="let conductor of conductores" value="{{conductor.id}}">{{conductor.nombre}} - {{conductor.tipo_licencia}}
+                                        </option>
+                                    </select>
+                                </form>
+                            </div>
+                            <div class="col-2">
+                                <p>Carro</p>
+                                <form [formGroup]="formulario" class="form rounded">
+                                    <select class="browser-default custom-select" formControlName="carro">
+                                        <option selected disabled>Elige un carro</option>
+                                        <option *ngFor="let carro of carros" value="{{carro.id}}">{{carro.marca}} - {{carro.modelo}}
+                                        </option>
+                                    </select>
+                                </form>
+                            </div>
+                            <div class="col-2">
+                                <p>Barrio</p>
+                                <form [formGroup]="formulario" class="form rounded">
+                                    <select class="browser-default custom-select" formControlName="barrio">
+                                        <option selected disabled>Elige un Barrio</option>
+                                        <option *ngFor="let barrio of barrios" value="{{barrio.id}}">{{barrio.barrio}}
+                                        </option>
+                                    </select>
+                                </form>
+                            </div>
+                            <div class="col-2">
+                                <p>Horario</p>
+                                <form [formGroup]="formulario" class="form rounded">
+                                    <select class="browser-default custom-select" formControlName="horario">
+                                        <option selected disabled>Elige un horario</option>
+                                        <option *ngFor="let horario of horarios" value="{{horario.id_horario}}">
+                                            {{horario.dia}} -
+                                            {{horario.hora_inicio}}
+                                            - {{horario.hora_fin}}
+                                        </option>
+                                    </select>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <app-modal-exito [accionExito]="accionExito"></app-modal-exito>
+                    <app-modal-error [accion]="accionError"></app-modal-error>
+
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" mdbBtn color="danger" mdbWavesEffect class="waves-light rounded-pill"
+                    aria-label="Close" (click)="insertRuta.hide()" mdbWavesEffect>
+                    Close <mdb-icon fas icon="times"></mdb-icon></button>
+                <button type="button" mdbBtn color="success" mdbWavesEffect class="rounded-pill" (click)="setRuta()">
+                    Guardar <mdb-icon fas icon="save"></mdb-icon></button>
+            </div>
+        </div>
+    </div>
+</div>

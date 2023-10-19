@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="col-md-4 card">
+
+        <div class="row align-items-center p-3">
+            <div class="col-12">
+                <div class="row align-items-center">
+                    <div class="pl-5">
+                        <img src="{{empresas?.logo}}" class="rounded" alt="" width="120px" height="120px" class="m-2"
+                            class="img-fluid p-1">
+                    </div>
+                    <div class="text-center">
+                        <h3 class="mt-1 pr-4 pl-2"><b>{{empresas?.nombre_empresa}}</b></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <form [formGroup]="formulario" class="form rounded text-center p-5">
+            <p>Podras administrar el contenido de la pagina a traves de este modulo.</p>
+
+            <input type="email" class="login-username rounded" autofocus="true" required
+                placeholder="Correo Electronico" formControlName="usuario" name="usuario" />
+            <input type="password" class="login-password rounded" required="true" placeholder="Contraseña"
+                formControlName="clave" name="clave" />
+            <!-- Sign in button -->
+            <button class="btn btn-primary login-btn login-submit" (click)="loginAdmin()">Iniciar sesión</button>
+        </form>
+
+    </div>
+</div>
+
+<div class="underlay-photo"></div>
+<app-modal-error [accion]="accionError"></app-modal-error>
+
+<router-outlet></router-outlet>

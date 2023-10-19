@@ -1,0 +1,41 @@
+<div id="updateConsejo" mdbModal #updateConsejo="mdbModal" class="modal fade right" tabindex="-1" role="dialog"
+    aria-labelledby="myBasicModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-full-height modal-right modal-success" role="document" style="width:450px">
+        <div class="modal-content">
+            <div class="modal-header" color="green">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="updateConsejo.hide()">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title w-100 heading lead" id="myModalLabel">Agregar consejo</h4>
+            </div>
+            <div class="modal-body">
+                Ingrese los datos
+                <div class="md-form mb-4 mr-1">
+                    <form [formGroup]="formulario" class="form rounded">
+                        <input type="text" id="nombre_consejo" formControlName="nombre_consejo" class="form-control" mdbInput>
+                        <label for="nombre_consejo">Nombre del consejo</label>
+                    </form>
+                </div>
+                <div class="md-form mb-5 mr-1">
+                    <form [formGroup]="formulario" class="form rounded">
+                        <p>Descripción del consejo</p>
+                        <textarea class="md-textarea form-control pt-0" id="descripcion" aria-label="With textarea" 
+                        formControlName="descripcion" class="form-control"></textarea>
+                        
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" mdbBtn color="danger" mdbWavesEffect class="waves-light rounded-pill"
+                    aria-label="Close" (click)="updateConsejo.hide()" mdbWavesEffect>
+                    Cerrar <mdb-icon fas icon="times"></mdb-icon></button>
+                <button type="button" mdbBtn color="success" mdbWavesEffect class="rounded-pill" (click)="update()">
+                    Guardar <mdb-icon fas icon="save"></mdb-icon></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-modal-exito [accionExito]="accionExito"></app-modal-exito>
+<app-modal-error [accion]="accion"></app-modal-error>

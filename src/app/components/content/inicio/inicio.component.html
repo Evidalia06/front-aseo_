@@ -1,0 +1,29 @@
+<ngb-carousel *ngIf="images">
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper">
+      <img [src]="images[0]" alt="Basuras">
+    </div>
+    <div class="carousel-caption">
+      <h3>Compromiso con la ecologíao</h3>
+      <p>La madre Tierra está herida; necesita niños reflexivos, cuidadosos y activos para protegerla del futuro. Leonardo DiCaprio.</p>
+    </div>
+  </ng-template>
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper">
+      <img [src]="images[1]" alt="Basuras 2">
+    </div>
+    <div class="carousel-caption">
+      <h3>Los seres humanos hemos sido capaces de hacerle esto a la naturaleza</h3>
+      <p>La Tierra ama nuestros pies, pero teme nuestras manos. Joaquín Araujo.</p>
+    </div>
+  </ng-template>
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper">
+      <img [src]="images[2]" alt="Basuras 3">
+    </div>
+    <div class="carousel-caption">
+      <h3>El agua sucia no se puede lavar</h3>
+      <p>El recurso natural más importantes para la vida en la Tierra.</p>
+    </div>
+  </ng-template>
+</ngb-carousel>

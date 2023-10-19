@@ -1,0 +1,15 @@
+<div class="text-center pt-4 texto">
+    <h1 style="color: #92D66E">Recomedaciones para reciclar</h1>
+    <br>
+    <p class="pt-1">Aprende con nosotros a reciclar correctamente</p>
+</div>
+
+<div class="row justify-content-md-center align-content-center m-0 pt-4 pb-4 text-center">
+    <div class="text-center p-3" *ngFor="let video of videos">
+        <h3 class="pb-4">{{video.nombre}}</h3>
+        <iframe width="525" height="295" [src]="getSafeUrl(video.link)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+</div>
+<div class="container text-center pb-5">
+    <button class="btn btn-success" (click)="redirectTo('aseo/separacion')"><b>Regresar</b></button>
+</div>

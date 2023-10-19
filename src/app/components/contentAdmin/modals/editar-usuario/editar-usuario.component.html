@@ -1,0 +1,52 @@
+<div id="updateUsuario" mdbModal #updateUsuario="mdbModal" class="modal fade right" tabindex="-1" role="dialog"
+    aria-labelledby="myBasicModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-full-height modal-right modal-success" role="document" style="width:450px">
+        <div class="modal-content">
+            <div class="modal-header" color="green">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="updateUsuario.hide()">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title w-100 heading lead" id="myModalLabel">Actualizar Usuario</h4>
+            </div>
+            <div class="modal-body">
+                Ingrese los datos
+                <div class="md-form mb-5 mr-1">
+                    <form [formGroup]="formulario" class="form rounded">
+                        <div class="md-form mb-5">
+                            <input type="number" id="cedula" formControlName="cedula" class="form-control" mdbInput>
+                            <label for="cedula">Cédula</label>
+                        </div>
+                        <div class="md-form mb-5">
+                            <input type="text" id="nombre" formControlName="nombre" class="form-control" mdbInput>
+                            <label for="nombre">Nombre</label>
+                        </div>
+                        <div class="md-form mb-5">
+                            <input type="text" id="apellido" formControlName="apellido" class="form-control" mdbInput>
+                            <label for="apellido">Apellido</label>
+                        </div>
+                        <div class="md-form mb-5">
+                            <input type="text" id="usuario" formControlName="usuario" class="form-control" mdbInput>
+                            <label for="usuario">Usuario</label>
+                        </div>
+                        <div class="md-form mb-5">
+                            <input type="text" id="clave" formControlName="clave" class="form-control" mdbInput pattern="[0-9]">
+                            <label for="clave">Clave</label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+
+                <button type="button" mdbBtn color="danger" mdbWavesEffect class="waves-light rounded-pill"
+                    aria-label="Close" (click)="updateUsuario.hide()" mdbWavesEffect>
+                    Close <mdb-icon fas icon="times"></mdb-icon></button>
+                <button type="button" mdbBtn color="success" mdbWavesEffect class="rounded-pill" (click)="update()">
+                    Guardar <mdb-icon fas icon="save"></mdb-icon></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-modal-exito [accionExito]="accionExito"></app-modal-exito>
+<app-modal-error [accion]="accion"></app-modal-error>
