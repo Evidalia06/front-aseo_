@@ -5,6 +5,7 @@
   },
   "version": 1,
   "newProjectRoot": "projects",
+  "defaultProject": "front-aseo",
   "projects": {
     "front-aseo": {
       "projectType": "application",
@@ -140,5 +141,5 @@
       }
     }
   },
-  "defaultProject": "front-aseo"
+  
 }
