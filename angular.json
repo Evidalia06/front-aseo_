@@ -6,7 +6,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "front-aseo": {
+    "front-aseo_": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/front-aseo",
+            "outputPath": "dist/front-aseo_",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -81,18 +81,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "front-aseo:build"
+            "browserTarget": "front-aseo_:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "front-aseo:build:production"
+              "browserTarget": "front-aseo_:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "front-aseo:build"
+            "browserTarget": "front-aseo_:build"
           }
         },
         "test": {
@@ -129,11 +129,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "front-aseo:serve"
+            "devServerTarget": "front-aseo_:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "front-aseo:serve:production"
+              "devServerTarget": "front-aseo_:serve:production"
             }
           }
         }
